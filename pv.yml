@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: myazvol
+spec:
+  capacity:
+    storage: 1Gi
+  storageClassName: default
+  accessModes:
+    - ReadWriteOnce
+  azureDisk:
+    kind: Managed
+    diskName: demodisk   
+    diskURI: /subscriptions/705c5438-410b-49c4-a02b-dedb5b7b45df/resourceGroups/demoresourcegroup/providers/Microsoft.Compute/disks/demodisk
+    fsType: ext4
+  persistentVolumeReclaimPolicy: Retain
+  claimRef:
+    name: myebsvolclaim
